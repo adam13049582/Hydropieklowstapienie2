@@ -1,7 +1,7 @@
-*log
-*ipch
-Debug/
-Hydropiekłowstąpienie/Debug/
+*.log
+*.ipch
+*/Debug/
+*/Hydropiekłowstąpienie/Debug/
 *.db
 *.opendb
 *.tlog
@@ -9,3 +9,4 @@ Hydropiekłowstąpienie/Debug/
 *.idb
 *.pdb
 .suo
+Browse.VC.db
