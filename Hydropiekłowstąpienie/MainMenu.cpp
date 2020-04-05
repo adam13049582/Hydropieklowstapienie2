@@ -136,7 +136,7 @@ void MainMenu::createWindowMenu2() {
                     */
 
 
-                    //std::cout << "Clicked, Start!" << std::endl;
+                    std::cout << "Clicked, Start!" << std::endl;
                }
                 else if (settingsButtonImage.getGlobalBounds().contains(mousePosF))
                 {

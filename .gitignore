@@ -1,7 +1,7 @@
 *.log
 *.ipch
-*/Debug/
-*/Hydropiekłowstąpienie/Debug/
+Debug/
+Hydropiekłowstąpienie/Debug/
 *.db
 *.opendb
 *.tlog
