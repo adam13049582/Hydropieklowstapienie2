@@ -13,7 +13,6 @@
 using namespace std;
 
 void MainMenu::createWindowMenu2() {
-    cout << "kurwa";
     sf::RenderWindow window(sf::VideoMode(1024, 622), "Hydropieklowstapienie", sf::Style::Default);
 
     sf::Texture background;
@@ -26,9 +25,6 @@ void MainMenu::createWindowMenu2() {
     backgroundImage.setScale(
         window.getSize().x / backgroundImage.getLocalBounds().width,
         window.getSize().y / backgroundImage.getLocalBounds().height);
-    /*sf::Font font;
-    if (!font.loadFromFile("MATURASC.TTF"))
-        std::cout << "Can't find the font file" << std::endl;*/
 
     sf::Texture newGameButton;
     sf::Sprite newGameButtonImage;

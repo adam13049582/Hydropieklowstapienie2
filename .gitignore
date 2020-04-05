@@ -1,10 +1,11 @@
 *log
 *ipch
-Debug
-Hydropieklowstapienie/Debug
-*db
+Debug/
+Hydropiekłowstąpienie/Debug/
+*.db
 *.opendb
 *.tlog
 *.obj
 *.idb
 *.pdb
+.suo
