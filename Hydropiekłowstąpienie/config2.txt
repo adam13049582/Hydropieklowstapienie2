@@ -1,0 +1,3 @@
+kamienie=100
+rosliny=100
+ziemia=200
