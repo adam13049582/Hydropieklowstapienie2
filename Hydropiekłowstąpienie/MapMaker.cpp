@@ -10,6 +10,8 @@
 #include "ConfigModel.h"
 #include "FileReader.h"
 #include "MapMaker.h"
+#include "MapElementTypes.h"
+#include <vector>
 
 sf::RectangleShape MapMaker::makeStonesElement(int windowWidth, int windowHeight)
 {
@@ -23,25 +25,16 @@ sf::RectangleShape MapMaker::makeStonesElement(int windowWidth, int windowHeight
         int stoneHeight = 0;
         for (ConfigModel str : vecOfStr)
             if (str.key == "kamienie")
-                // std::cout << str.key << "= " << str.value << std::endl;
                 stoneHeight = stoi(str.value);
 
+        MapElementTypes mapElementType = Stones;
 
-        //sf::Texture background;
-        //// sf::Sprite backgroundImage;
-        //if (!background.loadFromFile("images/kamienie.jpg"))
-        //    std::cout << "Error: Could not display kamienie image" << std::endl;
-
-        //const sf::Texture* pBackground = &background;
-
-        setTexture("stones");
-
-        stones.setTexture(&texture);
+        setTexture(mapElementType);
+        stones.setTexture(&textures[mapElementType]);
 
         stones.setSize(sf::Vector2f(windowWidth, stoneHeight));
         stones.setPosition(0, windowHeight - stoneHeight);
     }
-    //stones.setFillColor(sf::Color(0, 255, 255));
     catch (const std::exception & e) { // caught by reference to base
         std::cout << " a standard exception was caught, with message '"
             << e.what() << "'\n";
@@ -59,16 +52,16 @@ sf::RectangleShape MapMaker::makeGroundElement(int windowWidth, int positionofSt
     int groundHeight = 0;
     for (ConfigModel str : vecOfStr)
         if (str.key == "ziemia")
-            // std::cout << str.key << "= " << str.value << std::endl;
             groundHeight = stoi(str.value);
 
     sf::RectangleShape ground(sf::Vector2f(0, 0));
     ground.setSize(sf::Vector2f(windowWidth, groundHeight));
     ground.setPosition(0, positionofStones - groundHeight);
-    setTexture("ground");
 
-    ground.setTexture(&texture);
-  //  ground.setFillColor(sf::Color(0, 255, 255));
+     MapElementTypes mapElementType = Ground;
+     setTexture(mapElementType);
+
+     ground.setTexture(&textures[mapElementType]);
 
     return ground;
 }
@@ -82,24 +75,28 @@ sf::RectangleShape MapMaker::makeGrassElement(int windowWidth, int positionofGro
     int grassHeight = 0;
     for (ConfigModel str : vecOfStr)
         if (str.key == "ziemia")
-            // std::cout << str.key << "= " << str.value << std::endl;
             grassHeight = stoi(str.value);
 
     sf::RectangleShape grass(sf::Vector2f(0, 0));
     grass.setSize(sf::Vector2f(windowWidth, grassHeight));
     grass.setPosition(0, positionofGround - grassHeight);
-    grass.setFillColor(sf::Color(0, 255, 255));
+    MapElementTypes mapElementType = Grass;
+    setTexture(mapElementType);
 
+    grass.setTexture(&textures[mapElementType]);
     return grass;
 }
-void MapMaker::setTexture(string object) {
+void MapMaker::setTexture(int mapElementType) {
     string fileName = "";
-    if (object == "stones") {
+    if (mapElementType == 0) {
         fileName = "images/kamienie.jpg";
     }
-    else if ("ground") {
+    else if (mapElementType == 1) {
         fileName = "images/ziemia.jpg";
     }
-    if (!texture.loadFromFile(fileName))
+    else if (mapElementType == 2) {
+        fileName = "images/trawa.jpg";
+    }
+    if (!textures[mapElementType].loadFromFile(fileName))
         std::cout << "Error: Could not display kamienie image" << std::endl;
 }

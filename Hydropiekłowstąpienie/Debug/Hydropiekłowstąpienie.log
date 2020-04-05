@@ -1,35 +1,34 @@
-﻿  MapMaker.cpp
-C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\MapMaker.cpp(41,50): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+﻿  GameController.cpp
+C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\GameController.cpp(48,101): warning C4244: "argument": konwersja z "const T" do "int", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\MapMaker.cpp(41,37): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\GameController.cpp(49,99): warning C4244: "argument": konwersja z "const T" do "int", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\MapMaker.cpp(42,44): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\MapMaker.cpp(66,46): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\GameController.cpp(68,44): warning C4244: "=": konwersja z "T" do "int", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\MapMaker.cpp(66,33): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\GameController.cpp(74,44): warning C4244: "=": konwersja z "T" do "int", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\MapMaker.cpp(67,44): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\MapMaker.cpp(89,45): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\GameController.cpp(79,44): warning C4244: "=": konwersja z "T" do "int", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\MapMaker.cpp(89,32): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\GameController.cpp(85,44): warning C4244: "=": konwersja z "T" do "int", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\MapMaker.cpp(90,43): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\GameController.cpp(89,30): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Hydropiekłowstąpienie\GameController.cpp(90,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
   Hydropiekłowstąpienie.vcxproj -> C:\Users\Adam\source\repos\Hydropiekłowstąpienie\Debug\Hydropiekłowstąpienie.exe

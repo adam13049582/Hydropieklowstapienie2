@@ -1,0 +1,10 @@
+*log
+*ipch
+Debug
+Hydropieklowstapienie/Debug
+*db
+*.opendb
+*.tlog
+*.obj
+*.idb
+*.pdb

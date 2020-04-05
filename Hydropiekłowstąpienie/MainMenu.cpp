@@ -136,12 +136,12 @@ void MainMenu::createWindowMenu2() {
                         window2.draw(rectangle);
                         window2.display();
                         std::cout << "Window2!" << std::endl;
-                    }*/
+                    }
+                    */
 
 
-
-                    ////std::cout << "Clicked, Start!" << std::endl;
-                }
+                    std::cout << "Clicked, Start!" << std::endl;
+               }
                 else if (settingsButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     std::cout << "Clicked, Settings!" << std::endl;

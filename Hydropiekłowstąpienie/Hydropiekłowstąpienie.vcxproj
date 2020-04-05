@@ -150,6 +150,7 @@
     <ClInclude Include="GameController.h" />
     <ClInclude Include="LocalizationElement.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MapElementTypes.h" />
     <ClInclude Include="MapMaker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
