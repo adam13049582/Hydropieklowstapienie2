@@ -12,6 +12,7 @@
 #include "ConfigModel.h"
 #include "FileReader.h"
 #include "MapMaker.h"
+#include "SoundsManager.h"
 #include <list>
 
 void GameController::createWindowGame() {
@@ -27,7 +28,7 @@ void GameController::createWindowGame() {
         window2.getSize().x / backgroundImage.getLocalBounds().width,
         window2.getSize().y / backgroundImage.getLocalBounds().height);
     backgroundImage.setColor(sf::Color(250, 20, 20));
-
+   
     sf::RectangleShape water(sf::Vector2f(120, 50));
     water.setSize(sf::Vector2f(1024, 100));
     water.setPosition(0, 622);
@@ -38,7 +39,9 @@ void GameController::createWindowGame() {
     sf::RectangleShape ground = mapMaker.makeGroundElement(window2.getSize().x, stones.getPosition().y);
     sf::RectangleShape grass = mapMaker.makeGrassElement(window2.getSize().x, ground.getPosition().y);
 
-
+    SoundsManager sound;
+    sf::Sound music=sound.playMusic();
+    music.play();
     window2.clear();
     window2.draw(backgroundImage);
     window2.draw(stones);
