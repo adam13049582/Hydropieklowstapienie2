@@ -11,7 +11,7 @@ private:
 	sf::SoundBuffer buffer;
 
 public:	
-	sf::Sound playMusic();
+	sf::Music* playMusic();
 	void setBuffer();
 };
 #endif

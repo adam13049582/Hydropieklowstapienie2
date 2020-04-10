@@ -9,11 +9,13 @@
 #include <string>
 #include "MainMenu.h"
 #include "GameController.h"
+#include "Settings.h"
+#include <thread>
 
 using namespace std;
 
 void MainMenu::createWindowMenu2() {
-    sf::RenderWindow window(sf::VideoMode(1024, 622), "Hydropieklowstapienie", sf::Style::Default);
+    sf::RenderWindow window(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
 
     sf::Texture background;
     sf::Sprite backgroundImage;
@@ -88,59 +90,21 @@ void MainMenu::createWindowMenu2() {
                 if (newGameButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     GameController game;
+                    //GameController *game = new GameController();
                     window.close();
                     game.createWindowGame();
-                   /* sf::RenderWindow window2(sf::VideoMode(1024, 622), "Hydropieklowstapienie", sf::Style::Default);
-                    backgroundImage.setColor(sf::Color(250, 20, 20));
-                    sf::RectangleShape rectangle(sf::Vector2f(120, 50));
-                    rectangle.setSize(sf::Vector2f(1024, 100));
-                    rectangle.setPosition(0, 622);
-                    rectangle.setFillColor(sf::Color(0, 127, 255));
-
-                    sf::RectangleShape rectangle2(sf::Vector2f(120, 50));
-                    rectangle2.setSize(sf::Vector2f(1024, 100));
-                    rectangle2.setPosition(200, 400);
-                    rectangle2.setFillColor(sf::Color(0, 255, 255));
-
-                    window2.clear();
-                    window2.draw(backgroundImage);
-                    window2.draw(rectangle2);
-                    window2.draw(rectangle);
-                    window2.display();
-                    int height;
-                    int scale;
-                    while (window2.isOpen())
-                    {
-                        window.close();
-                        if ((rectangle.getPosition().y > rectangle2.getPosition().y) && (rectangle.getPosition().y < (rectangle2.getPosition().y + rectangle2.getSize().y))) {
-                            height = rectangle.getPosition().y - 2;
-                            scale = 2;
-                            std::cout << "Collision!" << std::endl;
-
-                        }
-                        else {
-                            height = rectangle.getPosition().y - 10;
-                            scale = 10;
-                        }
-
-                        rectangle.setPosition(0, height);
-                        rectangle.scale(1, scale);
-                        Sleep(1000);
-                        window2.clear();
-                        window2.draw(backgroundImage);
-                        window2.draw(rectangle2);
-                        window2.draw(rectangle);
-                        window2.display();
-                        std::cout << "Window2!" << std::endl;
-                    }
-                    */
-
-
-                    //std::cout << "Clicked, Start!" << std::endl;
+                    //thread th1(
+                      //  &GameController::createWindowGame,game
+                   // );
+                   // th1.join();
+                    //delete game;                
                }
                 else if (settingsButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    std::cout << "Clicked, Settings!" << std::endl;
+                    Settings settings;
+                    //GameController *game = new GameController();
+                    window.close();
+                    settings.createSettingWindow();
                 }
                 else if (exitButtonImage.getGlobalBounds().contains(mousePosF))
                 {
@@ -154,5 +118,15 @@ void MainMenu::createWindowMenu2() {
 
 
     }
+}
+
+void MainMenu::setWidth(int _i)
+{
+    width = _i;
+}
+
+void MainMenu::setHeight(int _i)
+{
+    height = _i;
 }
 

@@ -39,9 +39,29 @@ void GameController::createWindowGame() {
     sf::RectangleShape ground = mapMaker.makeGroundElement(window2.getSize().x, stones.getPosition().y);
     sf::RectangleShape grass = mapMaker.makeGrassElement(window2.getSize().x, ground.getPosition().y);
 
-    SoundsManager sound;
+    //TODO: DO poprawy!!!
+    //try {
+    //   // SoundsManager sound
+    //         sf::Music music;
+    //    if (!music.openFromFile("sounds/My Heart Will Go On.wav"))
+    //        std::cout << "Error: Could not open titanic sound" << std::endl;
+    //   // sf::Music music = sound.playMusic();
+    //    //sf::Music music2 = (&music);
+    //    music.play();
+    //}
+    //catch (const std::exception & e) { // caught by reference to base
+    //    std::cout << " a standard exception was caught, with message '"
+    //        << e.what() << "'\n";
+    //}
+    /*
     sf::Sound music=sound.playMusic();
-    music.play();
+    music.play();*/
+        sf::Music music;
+        if (!music.openFromFile("sounds/My Heart Will Go On.wav"))
+            std::cout << "Error: Could not open titanic sound" << std::endl;
+        if (playMusic)
+            music.play();
+
     window2.clear();
     window2.draw(backgroundImage);
     window2.draw(stones);
@@ -50,7 +70,7 @@ void GameController::createWindowGame() {
 
     window2.draw(water);
     window2.display();
-
+   // window2.setActive(false);
     int height;
     int scale;
     
@@ -90,5 +110,11 @@ void GameController::createWindowGame() {
         window2.draw(water);
         window2.display();
         std::cout << "Window2!" << std::endl;
+        
     }
+}
+
+void GameController::setPlayMusic(bool _i)
+{
+    playMusic = _i;
 }
