@@ -1,15 +1,14 @@
 # ifndef GameControllerH
 # define GameControllerH
 #include <SFML\Graphics\RenderWindow.hpp>
+#include <SFML\Graphics\Color.hpp>
 
 using namespace std;
 
 class GameController {
 private:
-    bool playMusic = true;
 public:
     //Metoda generuj¹ca okno z menu g³ównym
-    void createWindowGame();
-    void setPlayMusic(bool _i);
+    void createWindowGame(bool playMusic, int width, int height);
 };
 #endif

@@ -92,7 +92,7 @@ void MainMenu::createWindowMenu2() {
                     GameController game;
                     //GameController *game = new GameController();
                     window.close();
-                    game.createWindowGame();
+                    game.createWindowGame(playMusic,width,height);
                     //thread th1(
                       //  &GameController::createWindowGame,game
                    // );
@@ -128,5 +128,15 @@ void MainMenu::setWidth(int _i)
 void MainMenu::setHeight(int _i)
 {
     height = _i;
+}
+
+void MainMenu::setPlayMusic(bool _i)
+{
+    playMusic = _i;
+}
+
+bool MainMenu::getPlayMusic()
+{
+    return playMusic;
 }
 

@@ -142,6 +142,7 @@
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MapConfig.cpp" />
     <ClCompile Include="MapMaker.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SoundsManager.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="GameController.h" />
     <ClInclude Include="LocalizationElement.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MapConfig.h" />
     <ClInclude Include="MapElementTypes.h" />
     <ClInclude Include="MapMaker.h" />
     <ClInclude Include="Settings.h" />

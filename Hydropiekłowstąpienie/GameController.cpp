@@ -15,9 +15,9 @@
 #include "SoundsManager.h"
 #include <list>
 
-void GameController::createWindowGame() {
+void GameController::createWindowGame(bool playMusic, int width,int height) {
 
-    sf::RenderWindow window2(sf::VideoMode(1024, 622), "Hydropieklowstapienie", sf::Style::Default);
+    sf::RenderWindow window2(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
     sf::Texture background;
     sf::Sprite backgroundImage;
     if (!background.loadFromFile("images/woda_morska.jpg"))
@@ -29,9 +29,9 @@ void GameController::createWindowGame() {
         window2.getSize().y / backgroundImage.getLocalBounds().height);
     backgroundImage.setColor(sf::Color(250, 20, 20));
    
-    sf::RectangleShape water(sf::Vector2f(120, 50));
-    water.setSize(sf::Vector2f(1024, 100));
-    water.setPosition(0, 622);
+    sf::RectangleShape water(sf::Vector2f(0, 0));
+    water.setSize(sf::Vector2f(window2.getSize().x, 100));
+    water.setPosition(0, window2.getSize().y);
     water.setFillColor(sf::Color(0, 127, 255));
 
     MapMaker mapMaker;
@@ -39,28 +39,11 @@ void GameController::createWindowGame() {
     sf::RectangleShape ground = mapMaker.makeGroundElement(window2.getSize().x, stones.getPosition().y);
     sf::RectangleShape grass = mapMaker.makeGrassElement(window2.getSize().x, ground.getPosition().y);
 
-    //TODO: DO poprawy!!!
-    //try {
-    //   // SoundsManager sound
-    //         sf::Music music;
-    //    if (!music.openFromFile("sounds/My Heart Will Go On.wav"))
-    //        std::cout << "Error: Could not open titanic sound" << std::endl;
-    //   // sf::Music music = sound.playMusic();
-    //    //sf::Music music2 = (&music);
-    //    music.play();
-    //}
-    //catch (const std::exception & e) { // caught by reference to base
-    //    std::cout << " a standard exception was caught, with message '"
-    //        << e.what() << "'\n";
-    //}
-    /*
-    sf::Sound music=sound.playMusic();
-    music.play();*/
         sf::Music music;
         if (!music.openFromFile("sounds/My Heart Will Go On.wav"))
             std::cout << "Error: Could not open titanic sound" << std::endl;
         if (playMusic)
-            music.play();
+             music.play();
 
     window2.clear();
     window2.draw(backgroundImage);
@@ -71,35 +54,35 @@ void GameController::createWindowGame() {
     window2.draw(water);
     window2.display();
    // window2.setActive(false);
-    int height;
+    int heightOfWater;
     int scale;
     
     //sf::RenderWindow rwindow=&window2;
     while (window2.isOpen())
     {
         if ((water.getPosition().y > stones.getPosition().y) && (water.getPosition().y < (stones.getPosition().y + stones.getSize().y))) {
-            height = water.getPosition().y - 2;
+            heightOfWater = water.getPosition().y - 2;
             scale = 2;
             std::cout << "Collision Stones!" << std::endl;
 
         }
         else if ((water.getPosition().y > ground.getPosition().y) && (water.getPosition().y < (ground.getPosition().y + ground.getSize().y))) {
-            height = water.getPosition().y - 2;
+            heightOfWater = water.getPosition().y - 2;
             scale = 4;
             std::cout << "Collision Ground!" << std::endl;
         }
         else if ((water.getPosition().y > grass.getPosition().y) && (water.getPosition().y < (grass.getPosition().y + grass.getSize().y))) {
-            height = water.getPosition().y - 2;
+            heightOfWater = water.getPosition().y - 2;
             scale = 6;
             std::cout << "Collision Grass!" << std::endl;
 
         }
         else {
-            height = water.getPosition().y - 10;
+            heightOfWater = water.getPosition().y - 10;
             scale = 10;
         }
 
-        water.setPosition(0, height);
+        water.setPosition(0, heightOfWater);
         water.scale(1, scale);
         Sleep(1000);
         window2.clear();
@@ -112,9 +95,4 @@ void GameController::createWindowGame() {
         std::cout << "Window2!" << std::endl;
         
     }
-}
-
-void GameController::setPlayMusic(bool _i)
-{
-    playMusic = _i;
 }

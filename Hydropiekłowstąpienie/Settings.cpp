@@ -173,12 +173,14 @@ void Settings::createSettingWindow()
                 else if (textMusicYESButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     std::cout << "Clicked, YesButton!" << std::endl;
-                    game.setPlayMusic(true);
+                    menu.setPlayMusic(true);
+                    //game.setPlayMusic(true);
                 }
                 else if (textMusicNOButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     std::cout << "Clicked, NOButton!" << std::endl;
-                    game.setPlayMusic(false);
+                    menu.setPlayMusic(false);
+                   // game.setPlayMusic(false);
                 }
                 else if (exitButtonImage.getGlobalBounds().contains(mousePosF))
                 {
