@@ -7,7 +7,7 @@
 
 void Settings::createSettingWindow()
 {
-    sf::RenderWindow settingsWindow(sf::VideoMode(1024, 622), "Hydropieklowstapienie", sf::Style::Default);
+    sf::RenderWindow settingsWindow(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
 
     sf::Texture background;
     sf::Sprite backgroundImage; sf::Font font;
@@ -29,21 +29,21 @@ void Settings::createSettingWindow()
     text.setString("Rozdzielczosc");
     text.setPosition((settingsWindow.getSize().x/2)-50, settingsWindow.getSize().y/5);
     text.setCharacterSize(30); // in pixels, not points!
-    text.setFillColor(sf::Color::Red);
+    text.setFillColor(sf::Color(66,58,19));
 
     sf::Text textSmallResolution;
     textSmallResolution.setFont(font);
     textSmallResolution.setString("1024 X 622");
     textSmallResolution.setPosition((settingsWindow.getSize().x / 2) - 150, settingsWindow.getSize().y / 3);
     textSmallResolution.setCharacterSize(26); // in pixels, not points!
-    textSmallResolution.setFillColor(sf::Color::Magenta);
+    textSmallResolution.setFillColor(sf::Color(97, 83, 14));
 
     sf::Text textBigResolution;
     textBigResolution.setFont(font);
     textBigResolution.setString("1600 X 900");
     textBigResolution.setPosition((settingsWindow.getSize().x / 2) + 150, settingsWindow.getSize().y / 3);
     textBigResolution.setCharacterSize(26); // in pixels, not points!
-    textBigResolution.setFillColor(sf::Color::Magenta);
+    textBigResolution.setFillColor(sf::Color(97, 83, 14));
 
     sf::Texture newGameButton;
     if (!newGameButton.loadFromFile("images/button.png"))
@@ -64,21 +64,21 @@ void Settings::createSettingWindow()
     textMusic.setString("Muzyka");
     textMusic.setPosition((settingsWindow.getSize().x / 2) - 15, settingsWindow.getSize().y / 2);
     textMusic.setCharacterSize(30); // in pixels, not points!
-    textMusic.setFillColor(sf::Color::Red);
+    textMusic.setFillColor(sf::Color(66, 58, 19));
 
     sf::Text textMusicYES;
     textMusicYES.setFont(font);
     textMusicYES.setString("TAK");
     textMusicYES.setPosition((settingsWindow.getSize().x / 2) - 150, (settingsWindow.getSize().y * 0.6));
     textMusicYES.setCharacterSize(26); // in pixels, not points!
-    textMusicYES.setFillColor(sf::Color::Magenta);
+    textMusicYES.setFillColor(sf::Color(97, 83, 14));
 
     sf::Text textMusicNO;
     textMusicNO.setFont(font);
     textMusicNO.setString("NIE");
     textMusicNO.setPosition((settingsWindow.getSize().x / 2) + 150, (settingsWindow.getSize().y * 0.6));
     textMusicNO.setCharacterSize(26); // in pixels, not points!
-    textMusicNO.setFillColor(sf::Color::Magenta);
+    textMusicNO.setFillColor(sf::Color(97, 83, 14));
 
     sf::Texture textMusicButton;
     if (!textMusicButton.loadFromFile("images/button.png"))
@@ -99,7 +99,7 @@ void Settings::createSettingWindow()
     textBack.setString("Wstecz");
     textBack.setPosition((settingsWindow.getSize().x / 10) , settingsWindow.getSize().y * 0.9);
     textBack.setCharacterSize(30); // in pixels, not points!
-    textBack.setFillColor(sf::Color::Red);
+    textBack.setFillColor(sf::Color(66, 58, 19));
 
     sf::Texture exitButton;
     sf::Sprite exitButtonImage;
@@ -161,26 +161,79 @@ void Settings::createSettingWindow()
                     std::cout << "Small resolution!" << std::endl;
                     menu.setWidth(1024);
                     menu.setHeight(622);
+                    setWidth(1024);
+                    setHeight(622);
 
+                    backgroundImage.setScale(
+                        settingsWindow.getSize().x / backgroundImage.getLocalBounds().width,
+                        settingsWindow.getSize().y / backgroundImage.getLocalBounds().height);
 
+                    settingsWindow.create(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
+
+                   /* textSmallResolution.setFillColor(sf::Color::Yellow);
+                    textBigResolution.setFillColor(sf::Color(97, 83, 14));
+                    settingsWindow.clear();
+                    settingsWindow.draw(backgroundImage);
+                    settingsWindow.draw(smallResolutionButtonImage);
+                    settingsWindow.draw(bigResolutionButtonImage);
+                    settingsWindow.draw(textMusicYESButtonImage);
+                    settingsWindow.draw(textMusicNOButtonImage);
+                    settingsWindow.draw(exitButtonImage);
+                    settingsWindow.draw(text);
+                    settingsWindow.draw(textBigResolution);
+                    settingsWindow.draw(textSmallResolution);
+                    settingsWindow.draw(textMusic);
+                    settingsWindow.draw(textMusicYES);
+                    settingsWindow.draw(textMusicNO);
+                    settingsWindow.draw(textBack);
+
+                    settingsWindow.display();*/
                 }
                 else if (bigResolutionButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     std::cout << "Big resolution!" << std::endl;
                     menu.setWidth(1600);
                     menu.setHeight(900);
+                    setWidth(1600);
+                    setHeight(900);
+                    settingsWindow.create(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Fullscreen);
+
+                    backgroundImage.setScale(
+                        settingsWindow.getSize().x / backgroundImage.getLocalBounds().width,
+                        settingsWindow.getSize().y / backgroundImage.getLocalBounds().height);
+
+                    textBigResolution.setFillColor(sf::Color::Yellow);
+                    textSmallResolution.setFillColor(sf::Color(97, 83, 14));
+                  /*  settingsWindow.clear();
+                    settingsWindow.draw(backgroundImage);
+                    settingsWindow.draw(smallResolutionButtonImage);
+                    settingsWindow.draw(bigResolutionButtonImage);
+                    settingsWindow.draw(textMusicYESButtonImage);
+                    settingsWindow.draw(textMusicNOButtonImage);
+                    settingsWindow.draw(exitButtonImage);
+                    settingsWindow.draw(text);
+                    settingsWindow.draw(textBigResolution);
+                    settingsWindow.draw(textSmallResolution);
+                    settingsWindow.draw(textMusic);
+                    settingsWindow.draw(textMusicYES);
+                    settingsWindow.draw(textMusicNO);
+                    settingsWindow.draw(textBack);
+
+                    settingsWindow.display();*/
                 }
                 else if (textMusicYESButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     std::cout << "Clicked, YesButton!" << std::endl;
                     menu.setPlayMusic(true);
-                    //game.setPlayMusic(true);
+                    textMusicYES.setFillColor(sf::Color::Yellow);
+                    settingsWindow.draw(textMusicYES);
+
                 }
                 else if (textMusicNOButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     std::cout << "Clicked, NOButton!" << std::endl;
                     menu.setPlayMusic(false);
-                   // game.setPlayMusic(false);
+                    textMusicNO.setFillColor(sf::Color::Yellow);
                 }
                 else if (exitButtonImage.getGlobalBounds().contains(mousePosF))
                 {
@@ -192,7 +245,34 @@ void Settings::createSettingWindow()
             }
             break;
             }
+
+            settingsWindow.clear();
+            settingsWindow.draw(backgroundImage);
+            settingsWindow.draw(smallResolutionButtonImage);
+            settingsWindow.draw(bigResolutionButtonImage);
+            settingsWindow.draw(textMusicYESButtonImage);
+            settingsWindow.draw(textMusicNOButtonImage);
+            settingsWindow.draw(exitButtonImage);
+            settingsWindow.draw(text);
+            settingsWindow.draw(textBigResolution);
+            settingsWindow.draw(textSmallResolution);
+            settingsWindow.draw(textMusic);
+            settingsWindow.draw(textMusicYES);
+            settingsWindow.draw(textMusicNO);
+            settingsWindow.draw(textBack);
+
+            settingsWindow.display();
         }
 
     }
+}
+
+void Settings::setWidth(int _i)
+{
+    width = _i;
+}
+
+void Settings::setHeight(int _i)
+{
+    height = _i;
 }

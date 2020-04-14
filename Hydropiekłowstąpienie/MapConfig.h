@@ -12,3 +12,4 @@ public:
 	list<ConfigModel> getConfigForMap();
 };
 #endif
+

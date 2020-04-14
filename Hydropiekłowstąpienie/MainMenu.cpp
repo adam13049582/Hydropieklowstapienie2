@@ -19,8 +19,8 @@ void MainMenu::createWindowMenu2() {
 
     sf::Texture background;
     sf::Sprite backgroundImage;
-
-    if (!background.loadFromFile("images/Menu_g³ówne.jpg"))
+    sf::Font font;
+    if (!background.loadFromFile("images/woda_morska.jpg"))
         std::cout << "Error: Could not display Menu_g³ówne image" << std::endl;
 
     backgroundImage.setTexture(background);
@@ -28,11 +28,37 @@ void MainMenu::createWindowMenu2() {
         window.getSize().x / backgroundImage.getLocalBounds().width,
         window.getSize().y / backgroundImage.getLocalBounds().height);
 
+    if (!font.loadFromFile("fonts/impact.ttf"))
+    {
+        cout << "Couldn't load fonts impact" << endl;
+    }
+
+    sf::Text textStart;
+    textStart.setFont(font);
+    textStart.setString("START");
+    textStart.setPosition((window.getSize().x / 2) - 50, window.getSize().y / 5);
+    textStart.setCharacterSize(40); // in pixels, not points!
+    textStart.setFillColor(sf::Color(66, 58, 19));
+
+    sf::Text textSettings;
+    textSettings.setFont(font);
+    textSettings.setString("USTAWIENIA");
+    textSettings.setPosition((window.getSize().x / 2) - 85, window.getSize().y / 3);
+    textSettings.setCharacterSize(40); // in pixels, not points!
+    textSettings.setFillColor(sf::Color(66, 58, 19));
+
+    sf::Text textExit;
+    textExit.setFont(font);
+    textExit.setString("KONIEC");
+    textExit.setPosition((window.getSize().x / 2) - 60, window.getSize().y * 0.5);
+    textExit.setCharacterSize(40); // in pixels, not points!
+    textExit.setFillColor(sf::Color(66, 58, 19));
+
     sf::Texture newGameButton;
     sf::Sprite newGameButtonImage;
     if (!newGameButton.loadFromFile("images/button.png"))
         std::cout << "Can't find the button image" << std::endl;
-    newGameButtonImage.setPosition(440.0f, 140.0f);
+    newGameButtonImage.setPosition((window.getSize().x / 2) - 50, window.getSize().y / 5);
     newGameButtonImage.setScale(1.0f, 1.3f);
     newGameButtonImage.setTexture(newGameButton);
 
@@ -41,22 +67,27 @@ void MainMenu::createWindowMenu2() {
     sf::Sprite settingsButtonImage;
     if (!settingsButton.loadFromFile("images/button.png"))
         std::cout << "Can't find the button image" << std::endl;
-    settingsButtonImage.setPosition(380.0f, 220.0f);
+    settingsButtonImage.setPosition((window.getSize().x / 2) - 85, window.getSize().y / 3);
     settingsButtonImage.setTexture(settingsButton);
-    settingsButtonImage.setScale(2.6f, 1.3f);
+    settingsButtonImage.setScale(2.0f, 1.2f);
 
     sf::Texture exitButton;
     sf::Sprite exitButtonImage;
     if (!exitButton.loadFromFile("images/button.png"))
         std::cout << "Can't find the button image" << std::endl;
-    exitButtonImage.setPosition(440.0f, 310.0f);
+    exitButtonImage.setPosition((window.getSize().x / 2) - 60, window.getSize().y * 0.5);
     exitButtonImage.setScale(1.0f, 1.3f);
     exitButtonImage.setTexture(exitButton);
+
     window.clear();
+
     window.draw(backgroundImage);
     window.draw(newGameButtonImage);
     window.draw(settingsButtonImage);
     window.draw(exitButtonImage);
+    window.draw(textStart);
+    window.draw(textSettings);
+    window.draw(textExit);
     window.display();
 
     while (window.isOpen())
