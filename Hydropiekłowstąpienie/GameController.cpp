@@ -122,7 +122,7 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
         window2.draw(water);
         window2.draw(timerText);
         window2.display();
-        if (heightOfWater == 600) {
+        if (heightOfWater == 0) {
             std::stringstream ss;
             ss << "Twoja mapa zosta³a zalana w czasie: " << stime << " sekund";
             std::string s = ss.str();
