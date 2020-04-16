@@ -2,5 +2,6 @@
 
 list<ConfigModel> MapConfig::getConfigForMap()
 { 
+	
 	return list<ConfigModel>();
 }

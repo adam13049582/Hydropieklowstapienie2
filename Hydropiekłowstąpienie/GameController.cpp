@@ -20,11 +20,19 @@
 #include <sstream>
 #include <iomanip>
 #include <locale>
+
+/// <summary>
+/// Metoda tworz¹ca okno gry
+/// </summary>
+/// <param name="playMusic"> parametr, czy w³¹czyæ muzykê</param>
+/// <param name="width"> szerokoœæ okna</param>
+/// <param name="height">wysokoœæ okna</param>
 void GameController::createWindowGame(bool playMusic, int width,int height) {
 
     sf::RenderWindow window2(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
     sf::Texture background;
     sf::Sprite backgroundImage;
+    FileReader fileReader;
     MainMenu menu;
     if (!background.loadFromFile("images/woda_morska.jpg"))
         std::cout << "Error: Could not display Menu_g³ówne image" << std::endl;
@@ -38,23 +46,18 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
     sf::RectangleShape water(sf::Vector2f(0, 0));
     water.setSize(sf::Vector2f(window2.getSize().x, 100));
     water.setPosition(0, window2.getSize().y);
-    //sf::Texture texture;
-    //if (!texture.loadFromFile("images/woda_test.jpg"))
-    //    std::cout << "Error: Could not display kamienie image" << std::endl;
-    //water.setTexture(&texture);
 
     water.setFillColor(sf::Color(0, 127, 255));
 
     MapMaker mapMaker;
+    mapMaker.SetConfig();
     sf::RectangleShape stones = mapMaker.makeStonesElement(window2.getSize().x,window2.getSize().y);
     sf::RectangleShape ground = mapMaker.makeGroundElement(window2.getSize().x, stones.getPosition().y);
     sf::RectangleShape grass = mapMaker.makeGrassElement(window2.getSize().x, ground.getPosition().y);
-
-        sf::Music music;
-        if (!music.openFromFile("sounds/My Heart Will Go On.wav"))
-            std::cout << "Error: Could not open titanic sound" << std::endl;
-        if (playMusic)
-             music.play();
+    
+    mapMaker.playMusic();
+    if (playMusic)
+        mapMaker.music.play();
        
         sf::Font font;
         int time = 0;
@@ -69,41 +72,41 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
         timerText.setFont(font);
         timerText.setPosition(10, 10);
         timerText.setCharacterSize(40);
-        
+
+        sf::Text info;
+        info.setFont(font);
+        info.setPosition(width-200, 10);
+        info.setCharacterSize(15);
+        info.setString("Nacisnij 'Esc' aby przerwac");
+
     window2.clear();
     window2.draw(backgroundImage);
     window2.draw(stones);
     window2.draw(ground);
     window2.draw(grass);
-
     window2.draw(water);
+    window2.draw(info);
     window2.display();
-   // window2.setActive(false);
     int heightOfWater;
     int scale;
     
     while (window2.isOpen())
     {
         if ((water.getPosition().y > stones.getPosition().y) && (water.getPosition().y < (stones.getPosition().y + stones.getSize().y))) {
-            heightOfWater = water.getPosition().y - 2;
-            scale = 2;
-            std::cout << "Collision Stones!" << std::endl;
-
+            heightOfWater = water.getPosition().y - 4;
+            scale = 1;
         }
         else if ((water.getPosition().y > ground.getPosition().y) && (water.getPosition().y < (ground.getPosition().y + ground.getSize().y))) {
-            heightOfWater = water.getPosition().y - 2;
-            scale = 4;
-            std::cout << "Collision Ground!" << std::endl;
+            heightOfWater = water.getPosition().y - 6;
+            scale = 2;
         }
         else if ((water.getPosition().y > grass.getPosition().y) && (water.getPosition().y < (grass.getPosition().y + grass.getSize().y))) {
-            heightOfWater = water.getPosition().y - 2;
-            scale = 6;
-            std::cout << "Collision Grass!" << std::endl;
-
+            heightOfWater = water.getPosition().y - 8;
+            scale = 3;
         }
         else {
             heightOfWater = water.getPosition().y - 10;
-            scale = 10;
+            scale = 3;
         }
 
         water.setPosition(0, heightOfWater);
@@ -121,14 +124,20 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
         window2.draw(grass);
         window2.draw(water);
         window2.draw(timerText);
+        window2.draw(info);
+
         window2.display();
-        if (heightOfWater == 0) {
-            std::stringstream ss;
-            ss << "Twoja mapa zosta³a zalana w czasie: " << stime << " sekund";
-            std::string s = ss.str();
+        if (GetAsyncKeyState(VK_ESCAPE))
+        {
+            mapMaker.music.stop();
+            mapMaker.music.pause();
+            window2.close();
+            menu.createWindowMenu2();
+        }
+        if (heightOfWater <= 0) {
             int msgboxID = MessageBox(
                 NULL,
-                (LPCWSTR)L"Twoja mapa zosta³a zalana w czasie:", //" << stime << " sekund",
+                (L"Twoja mapa zostala zalana w czasie: "s + to_wstring(time) + L" sekund"s).c_str(),
                 (LPCWSTR)L"Mapa zatopiona!!!",
                 MB_ICONINFORMATION | MB_OK | MB_DEFBUTTON2
             );
@@ -137,17 +146,13 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
             switch (msgboxID)
             {
             case IDOK:
-                music.stop();
-                music.pause();
+                mapMaker.music.stop();
+                mapMaker.music.pause();
                 window2.close();
                 menu.createWindowMenu2();
-                music.stop();
-                music.pause();
                break;         
             }
             
-        }
-        std::cout << "Window2!" << std::endl;
-        
+        }        
     }
 }

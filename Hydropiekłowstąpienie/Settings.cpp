@@ -5,6 +5,9 @@
 #include "MainMenu.h"
 #include "GameController.h"
 
+/// <summary>
+/// Metoda tworz¹ca okno ustawieñ
+/// </summary>
 void Settings::createSettingWindow()
 {
     sf::RenderWindow settingsWindow(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
@@ -28,21 +31,21 @@ void Settings::createSettingWindow()
     text.setFont(font);
     text.setString("Rozdzielczosc");
     text.setPosition((settingsWindow.getSize().x/2)-50, settingsWindow.getSize().y/5);
-    text.setCharacterSize(30); // in pixels, not points!
+    text.setCharacterSize(30);
     text.setFillColor(sf::Color(66,58,19));
 
     sf::Text textSmallResolution;
     textSmallResolution.setFont(font);
     textSmallResolution.setString("1024 X 622");
     textSmallResolution.setPosition((settingsWindow.getSize().x / 2) - 150, settingsWindow.getSize().y / 3);
-    textSmallResolution.setCharacterSize(26); // in pixels, not points!
+    textSmallResolution.setCharacterSize(26); 
     textSmallResolution.setFillColor(sf::Color(97, 83, 14));
 
     sf::Text textBigResolution;
     textBigResolution.setFont(font);
-    textBigResolution.setString("1600 X 900");
+    textBigResolution.setString("1366 X 768");
     textBigResolution.setPosition((settingsWindow.getSize().x / 2) + 150, settingsWindow.getSize().y / 3);
-    textBigResolution.setCharacterSize(26); // in pixels, not points!
+    textBigResolution.setCharacterSize(26); 
     textBigResolution.setFillColor(sf::Color(97, 83, 14));
 
     sf::Texture newGameButton;
@@ -63,21 +66,21 @@ void Settings::createSettingWindow()
     textMusic.setFont(font);
     textMusic.setString("Muzyka");
     textMusic.setPosition((settingsWindow.getSize().x / 2) - 15, settingsWindow.getSize().y / 2);
-    textMusic.setCharacterSize(30); // in pixels, not points!
+    textMusic.setCharacterSize(30);
     textMusic.setFillColor(sf::Color(66, 58, 19));
 
     sf::Text textMusicYES;
     textMusicYES.setFont(font);
     textMusicYES.setString("TAK");
     textMusicYES.setPosition((settingsWindow.getSize().x / 2) - 150, (settingsWindow.getSize().y * 0.6));
-    textMusicYES.setCharacterSize(26); // in pixels, not points!
+    textMusicYES.setCharacterSize(26); 
     textMusicYES.setFillColor(sf::Color(97, 83, 14));
 
     sf::Text textMusicNO;
     textMusicNO.setFont(font);
     textMusicNO.setString("NIE");
     textMusicNO.setPosition((settingsWindow.getSize().x / 2) + 150, (settingsWindow.getSize().y * 0.6));
-    textMusicNO.setCharacterSize(26); // in pixels, not points!
+    textMusicNO.setCharacterSize(26); 
     textMusicNO.setFillColor(sf::Color(97, 83, 14));
 
     sf::Texture textMusicButton;
@@ -98,7 +101,7 @@ void Settings::createSettingWindow()
     textBack.setFont(font);
     textBack.setString("Wstecz");
     textBack.setPosition((settingsWindow.getSize().x / 10) , settingsWindow.getSize().y * 0.9);
-    textBack.setCharacterSize(30); // in pixels, not points!
+    textBack.setCharacterSize(30);
     textBack.setFillColor(sf::Color(66, 58, 19));
 
     sf::Texture exitButton;
@@ -168,35 +171,20 @@ void Settings::createSettingWindow()
                         settingsWindow.getSize().x / backgroundImage.getLocalBounds().width,
                         settingsWindow.getSize().y / backgroundImage.getLocalBounds().height);
 
-                    settingsWindow.create(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
 
-                   /* textSmallResolution.setFillColor(sf::Color::Yellow);
                     textBigResolution.setFillColor(sf::Color(97, 83, 14));
-                    settingsWindow.clear();
-                    settingsWindow.draw(backgroundImage);
-                    settingsWindow.draw(smallResolutionButtonImage);
-                    settingsWindow.draw(bigResolutionButtonImage);
-                    settingsWindow.draw(textMusicYESButtonImage);
-                    settingsWindow.draw(textMusicNOButtonImage);
-                    settingsWindow.draw(exitButtonImage);
-                    settingsWindow.draw(text);
-                    settingsWindow.draw(textBigResolution);
-                    settingsWindow.draw(textSmallResolution);
-                    settingsWindow.draw(textMusic);
-                    settingsWindow.draw(textMusicYES);
-                    settingsWindow.draw(textMusicNO);
-                    settingsWindow.draw(textBack);
+                    textSmallResolution.setFillColor(sf::Color::Yellow);
 
-                    settingsWindow.display();*/
+                    settingsWindow.create(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
                 }
                 else if (bigResolutionButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     std::cout << "Big resolution!" << std::endl;
-                    menu.setWidth(1600);
-                    menu.setHeight(900);
-                    setWidth(1600);
-                    setHeight(900);
-                    settingsWindow.create(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Fullscreen);
+                    menu.setWidth(1366);
+                    menu.setHeight(768);
+                    setWidth(1366);
+                    setHeight(768);
+                    settingsWindow.create(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
 
                     backgroundImage.setScale(
                         settingsWindow.getSize().x / backgroundImage.getLocalBounds().width,
@@ -204,28 +192,13 @@ void Settings::createSettingWindow()
 
                     textBigResolution.setFillColor(sf::Color::Yellow);
                     textSmallResolution.setFillColor(sf::Color(97, 83, 14));
-                  /*  settingsWindow.clear();
-                    settingsWindow.draw(backgroundImage);
-                    settingsWindow.draw(smallResolutionButtonImage);
-                    settingsWindow.draw(bigResolutionButtonImage);
-                    settingsWindow.draw(textMusicYESButtonImage);
-                    settingsWindow.draw(textMusicNOButtonImage);
-                    settingsWindow.draw(exitButtonImage);
-                    settingsWindow.draw(text);
-                    settingsWindow.draw(textBigResolution);
-                    settingsWindow.draw(textSmallResolution);
-                    settingsWindow.draw(textMusic);
-                    settingsWindow.draw(textMusicYES);
-                    settingsWindow.draw(textMusicNO);
-                    settingsWindow.draw(textBack);
-
-                    settingsWindow.display();*/
                 }
                 else if (textMusicYESButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     std::cout << "Clicked, YesButton!" << std::endl;
                     menu.setPlayMusic(true);
                     textMusicYES.setFillColor(sf::Color::Yellow);
+                    textMusicNO.setFillColor(sf::Color(97, 83, 14));
                     settingsWindow.draw(textMusicYES);
 
                 }
@@ -234,10 +207,11 @@ void Settings::createSettingWindow()
                     std::cout << "Clicked, NOButton!" << std::endl;
                     menu.setPlayMusic(false);
                     textMusicNO.setFillColor(sf::Color::Yellow);
+                    textMusicYES.setFillColor(sf::Color(97, 83, 14));
+
                 }
                 else if (exitButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    //GameController *game = new GameController();
                     settingsWindow.close();
                     menu.createWindowMenu2();
                     std::cout << "Clicked, Exit!" << std::endl;
@@ -267,11 +241,19 @@ void Settings::createSettingWindow()
     }
 }
 
+/// <summary>
+/// Metoda ustawiaj¹ca szerokoœæ okna
+/// </summary>
+/// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do pola width</param>
 void Settings::setWidth(int _i)
 {
     width = _i;
 }
 
+/// <summary>
+/// Metoda ustawiaj¹ca wysokoœæ okna
+/// </summary>
+/// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ pola height</param>
 void Settings::setHeight(int _i)
 {
     height = _i;

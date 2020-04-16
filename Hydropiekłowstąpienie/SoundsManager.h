@@ -8,10 +8,10 @@ using namespace std;
 
 class SoundsManager {
 private:
-	sf::SoundBuffer buffer;
 
 public:	
-	sf::Music* playMusic();
-	void setBuffer();
+	sf::Music music;
+
+	void playMusic();
 };
 #endif

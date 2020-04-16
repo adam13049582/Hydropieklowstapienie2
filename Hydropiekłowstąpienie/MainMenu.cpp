@@ -14,6 +14,9 @@
 
 using namespace std;
 
+/// <summary>
+/// Metoda tworz¹ca okno menu
+/// </summary>
 void MainMenu::createWindowMenu2() {
     sf::RenderWindow window(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
 
@@ -37,21 +40,21 @@ void MainMenu::createWindowMenu2() {
     textStart.setFont(font);
     textStart.setString("START");
     textStart.setPosition((window.getSize().x / 2) - 50, window.getSize().y / 5);
-    textStart.setCharacterSize(40); // in pixels, not points!
+    textStart.setCharacterSize(40);
     textStart.setFillColor(sf::Color(66, 58, 19));
 
     sf::Text textSettings;
     textSettings.setFont(font);
     textSettings.setString("USTAWIENIA");
     textSettings.setPosition((window.getSize().x / 2) - 85, window.getSize().y / 3);
-    textSettings.setCharacterSize(40); // in pixels, not points!
+    textSettings.setCharacterSize(40); 
     textSettings.setFillColor(sf::Color(66, 58, 19));
 
     sf::Text textExit;
     textExit.setFont(font);
     textExit.setString("KONIEC");
     textExit.setPosition((window.getSize().x / 2) - 60, window.getSize().y * 0.5);
-    textExit.setCharacterSize(40); // in pixels, not points!
+    textExit.setCharacterSize(40); 
     textExit.setFillColor(sf::Color(66, 58, 19));
 
     sf::Texture newGameButton;
@@ -121,19 +124,12 @@ void MainMenu::createWindowMenu2() {
                 if (newGameButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     GameController game;
-                    //GameController *game = new GameController();
                     window.close();
-                    game.createWindowGame(playMusic,width,height);
-                    //thread th1(
-                      //  &GameController::createWindowGame,game
-                   // );
-                   // th1.join();
-                    //delete game;                
+                    game.createWindowGame(playMusic,width,height);               
                }
                 else if (settingsButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     Settings settings;
-                    //GameController *game = new GameController();
                     window.close();
                     settings.createSettingWindow();
                 }
@@ -151,21 +147,34 @@ void MainMenu::createWindowMenu2() {
     }
 }
 
+/// <summary>
+/// Metoda ustawiaj¹ca szerokoœæ okna
+/// </summary>
+/// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru width</param>
 void MainMenu::setWidth(int _i)
 {
     width = _i;
 }
-
+/// <summary>
+/// Metoda ustawiaj¹ca szerokoœæ okna
+/// </summary>
+/// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru height</param>
 void MainMenu::setHeight(int _i)
 {
     height = _i;
 }
-
+/// <summary>
+/// Metoda ustawiaj¹ca parametr, czy odtwarzaæ muzykê
+/// </summary>
+/// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru playMusic</param>
 void MainMenu::setPlayMusic(bool _i)
 {
     playMusic = _i;
 }
-
+/// <summary>
+/// Metoda ustawiaj¹ca pobieraj¹ca wartoœæ z pola playMusic
+/// <returns>wartoœæ pola playMusic</returns>
+/// </summary>
 bool MainMenu::getPlayMusic()
 {
     return playMusic;
