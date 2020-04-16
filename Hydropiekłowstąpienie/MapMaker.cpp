@@ -115,7 +115,7 @@ sf::RectangleShape MapMaker::makeGrassElement(int windowWidth, int positionofGro
 
     grass.setTexture(&textures[mapElementType]);
 }
-catch (const std::exception & e) { // caught by reference to base
+catch (const std::exception & e) {
     std::cout << " a standard exception was caught when make stones object, with message '"
         << e.what() << "'\n";
 }
