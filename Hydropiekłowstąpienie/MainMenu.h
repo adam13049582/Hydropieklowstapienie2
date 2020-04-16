@@ -20,7 +20,7 @@ public:
     /// <summary>
     /// Metoda tworz¹ca okno menu
     /// </summary>
-    void createWindowMenu2();
+    void createWindowMenu();
 
     /// <summary>
     /// Metoda ustawiaj¹ca szerokoœæ okna

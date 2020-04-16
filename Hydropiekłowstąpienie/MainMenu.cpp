@@ -17,7 +17,7 @@ using namespace std;
 /// <summary>
 /// Metoda tworz¹ca okno menu
 /// </summary>
-void MainMenu::createWindowMenu2() {
+void MainMenu::createWindowMenu() {
     sf::RenderWindow window(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
 
     sf::Texture background;

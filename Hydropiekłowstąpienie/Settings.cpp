@@ -213,7 +213,7 @@ void Settings::createSettingWindow()
                 else if (exitButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     settingsWindow.close();
-                    menu.createWindowMenu2();
+                    menu.createWindowMenu();
                     std::cout << "Clicked, Exit!" << std::endl;
                 }
             }

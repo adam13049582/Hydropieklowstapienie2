@@ -8,13 +8,11 @@ using namespace std;
 /// Klasa tworz¹ca obs³uguj¹ca zdarzenia w panelu Ustawienia
 /// <summary>
 class Settings {
+	//szerokoœæ okna
 	int width = 1024;
+
+	//wysokoœæ okna
 	int height = 622;
-public:
-	/// <summary>
-	/// Metoda tworz¹ca okno ustawieñ
-	/// </summary>
-	void  createSettingWindow();
 
 	/// <summary>
 	/// Metoda ustawiaj¹ca szerokoœæ okna
@@ -27,5 +25,12 @@ public:
 	/// </summary>
 	/// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ pola height</param>
 	void setHeight(int _i);
+public:
+	/// <summary>
+	/// Metoda tworz¹ca okno ustawieñ
+	/// </summary>
+	void  createSettingWindow();
+
+	
 };
 #endif

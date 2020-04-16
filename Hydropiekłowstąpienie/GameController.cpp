@@ -132,7 +132,7 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
             mapMaker.music.stop();
             mapMaker.music.pause();
             window2.close();
-            menu.createWindowMenu2();
+            menu.createWindowMenu();
         }
         if (heightOfWater <= 0) {
             int msgboxID = MessageBox(
@@ -149,7 +149,7 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
                 mapMaker.music.stop();
                 mapMaker.music.pause();
                 window2.close();
-                menu.createWindowMenu2();
+                menu.createWindowMenu();
                break;         
             }
             
