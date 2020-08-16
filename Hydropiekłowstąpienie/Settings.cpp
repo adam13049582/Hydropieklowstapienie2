@@ -161,7 +161,6 @@ void Settings::createSettingWindow()
                 sf::Vector2f mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
                 if (smallResolutionButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    std::cout << "Small resolution!" << std::endl;
                     menu.setWidth(1024);
                     menu.setHeight(622);
                     setWidth(1024);
@@ -179,7 +178,6 @@ void Settings::createSettingWindow()
                 }
                 else if (bigResolutionButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    std::cout << "Big resolution!" << std::endl;
                     menu.setWidth(1366);
                     menu.setHeight(768);
                     setWidth(1366);
@@ -195,7 +193,6 @@ void Settings::createSettingWindow()
                 }
                 else if (textMusicYESButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    std::cout << "Clicked, YesButton!" << std::endl;
                     menu.setPlayMusic(true);
                     textMusicYES.setFillColor(sf::Color::Yellow);
                     textMusicNO.setFillColor(sf::Color(97, 83, 14));
@@ -204,7 +201,6 @@ void Settings::createSettingWindow()
                 }
                 else if (textMusicNOButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    std::cout << "Clicked, NOButton!" << std::endl;
                     menu.setPlayMusic(false);
                     textMusicNO.setFillColor(sf::Color::Yellow);
                     textMusicYES.setFillColor(sf::Color(97, 83, 14));
@@ -214,7 +210,6 @@ void Settings::createSettingWindow()
                 {
                     settingsWindow.close();
                     menu.createWindowMenu();
-                    std::cout << "Clicked, Exit!" << std::endl;
                 }
             }
             break;

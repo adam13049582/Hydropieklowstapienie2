@@ -2,8 +2,8 @@
 /// Enum do typu elementów mapy
 /// </summary>
 enum MapElementTypes {
-	Stones = 0,
-	Ground = 1,
-	Grass = 2,
-	Water = 3
+	StonesType = 0,
+	GroundType = 1,
+	GrassType = 2,
+	WaterType = 3
 };

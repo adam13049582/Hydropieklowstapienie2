@@ -38,7 +38,7 @@ public:
 	/// <param name="windowHeight">wysokoœæ okna</param>
 	/// <returns> obiekt typu RectangleShape bêd¹cy elementem mapy, w tym przypadku Kamienie<returns>
 	/// </summary>
-	sf::RectangleShape makeStonesElement(int windowWidth, int windowHeight);
+	sf::CircleShape makeStonesElement(int windowWidth, int windowHeight);
 
 	/// <summary>
 	/// Metoda nak³adaj¹ca teksturê na prostok¹t imitujacy roœliny
@@ -46,7 +46,7 @@ public:
 	/// <param name="positionofStones">wspó³rzêdna y prostok¹tu imituj¹cego kamienie</param>
 	/// <returns> obiekt typu RectangleShape bêd¹cy elementem mapy, w tym przypadku Ziemia<returns>
 	/// </summary>
-	sf::RectangleShape makeGroundElement(int windowWidth, int positionofStones);
+	sf::CircleShape makeGroundElement(int windowWidth, int positionofStones);
 
 	/// <summary>
 	/// Metoda nak³adaj¹ca teksturê na prostok¹t imitujacy roœliny

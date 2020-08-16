@@ -26,26 +26,29 @@ void MapMaker::SetConfig()
     /// <param name="windowHeight">wysokoœæ okna</param>
     /// <returns> obiekt typu RectangleShape bêd¹cy elementem mapy, w tym przypadku Kamienie<returns>
     /// </summary>
-sf::RectangleShape MapMaker::makeStonesElement(int windowWidth, int windowHeight)
+sf::CircleShape MapMaker::makeStonesElement(int windowWidth, int windowHeight)
 {
-    sf::RectangleShape stones(sf::Vector2f(0, 0));
-
+    sf::CircleShape stones;
+  
     try {
         std::vector < ConfigModel > vecOfStr(Config.begin(), Config.end());
 
         int stoneHeight = 0;
+        int stoneCount = 0;
         for (ConfigModel str : vecOfStr) {
-            if (str.key == "kamienie")
+            if (str.key == "wysokoscKamienie")
                 stoneHeight = stoi(str.value);
         }
-
-        MapElementTypes mapElementType = Stones;
+        stones.setRadius(stoneHeight/2);
+        //stones.setOutlineColor(sf::Color::Red);
+        stones.setPosition(10, 20);
+        MapElementTypes mapElementType = StonesType;
 
         setTexture(mapElementType);
         stones.setTexture(&textures[mapElementType]);
 
-        stones.setSize(sf::Vector2f(windowWidth, stoneHeight));
-        stones.setPosition(0, windowHeight - stoneHeight);
+        //stones.setSize(sf::Vector2f(stoneHeight, stoneHeight));
+        stones.setPosition(100, windowHeight - stoneHeight);
     }
     catch (const std::exception & e) {
         std::cout << " a standard exception was caught when make stones object, with message '"
@@ -60,33 +63,35 @@ sf::RectangleShape MapMaker::makeStonesElement(int windowWidth, int windowHeight
     /// <param name="positionofStones">wspó³rzêdna y prostok¹tu imituj¹cego kamienie</param>
     /// <returns> obiekt typu RectangleShape bêd¹cy elementem mapy, w tym przypadku Ziemia<returns>
     /// </summary>
-sf::RectangleShape MapMaker::makeGroundElement(int windowWidth, int positionofStones)
+sf::CircleShape MapMaker::makeGroundElement(int windowWidth, int positionofStones)
 {
-    sf::RectangleShape ground(sf::Vector2f(0, 0));
+   
 
     try {
         std::vector < ConfigModel > vecOfStr(Config.begin(), Config.end());
 
         int groundHeight = 0;
         for (ConfigModel str : vecOfStr) {
-            if (str.key == "ziemia")
+            if (str.key == "wysokoscZiemia")
                 groundHeight = stoi(str.value);
         }
+        sf::CircleShape ground(groundHeight, 3);
+       // ground.setSize(sf::Vector2f(windowWidth, groundHeight));
+        ground.setPosition(400, positionofStones - groundHeight);
 
-        ground.setSize(sf::Vector2f(windowWidth, groundHeight));
-        ground.setPosition(0, positionofStones - groundHeight);
-
-        MapElementTypes mapElementType = Ground;
+        MapElementTypes mapElementType = GroundType;
         setTexture(mapElementType);
 
         ground.setTexture(&textures[mapElementType]);
+        return ground;
+
     }
     catch (const std::exception & e) { 
         std::cout << " a standard exception was caught when make ground object, with message '"
             << e.what() << "'\n";
+        throw;
     }
 
-    return ground;
 }
     /// <summary>
     /// Metoda nak³adaj¹ca teksturê na prostok¹t imitujacy roœliny
@@ -104,13 +109,13 @@ sf::RectangleShape MapMaker::makeGrassElement(int windowWidth, int positionofGro
 
     int grassHeight = 0;
     for (ConfigModel str : vecOfStr) {
-        if (str.key == "ziemia")
+        if (str.key == "wysokoscRosliny")
             grassHeight = stoi(str.value);
     }
 
     grass.setSize(sf::Vector2f(windowWidth, grassHeight));
     grass.setPosition(0, positionofGround - grassHeight);
-    MapElementTypes mapElementType = Grass;
+    MapElementTypes mapElementType = GrassType;
     setTexture(mapElementType);
 
     grass.setTexture(&textures[mapElementType]);

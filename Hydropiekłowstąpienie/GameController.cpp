@@ -20,6 +20,9 @@
 #include <sstream>
 #include <iomanip>
 #include <locale>
+#include "Ground.h"
+#include "Stones.h"
+#include "Grass.h"
 
 /// <summary>
 /// Metoda tworz¹ca okno gry
@@ -34,7 +37,13 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
     sf::Sprite backgroundImage;
     FileReader fileReader;
     MainMenu menu;
-    if (!background.loadFromFile("images/woda_morska.jpg"))
+    Ground ground22;
+    Stones stones22;
+    Grass grass22;
+    ground22.flooding(1);
+    stones22.flooding(2);
+
+    if (!background.loadFromFile("images/tlo.jpg"))
         std::cout << "Error: Could not display Menu_g³ówne image" << std::endl;
 
     backgroundImage.setTexture(background);
@@ -44,20 +53,22 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
     backgroundImage.setColor(sf::Color(250, 20, 20));
    
     sf::RectangleShape water(sf::Vector2f(0, 0));
-    water.setSize(sf::Vector2f(window2.getSize().x, 100));
-    water.setPosition(0, window2.getSize().y);
+    water.setSize(sf::Vector2f(100, 100));
+    water.setPosition(window2.getSize().x, window2.getSize().y-100);
 
     water.setFillColor(sf::Color(0, 127, 255));
 
     MapMaker mapMaker;
-    mapMaker.SetConfig();
-    sf::RectangleShape stones = mapMaker.makeStonesElement(window2.getSize().x,window2.getSize().y);
-    sf::RectangleShape ground = mapMaker.makeGroundElement(window2.getSize().x, stones.getPosition().y);
-    sf::RectangleShape grass = mapMaker.makeGrassElement(window2.getSize().x, ground.getPosition().y);
-    
+ //   mapMaker.SetConfig();
+
+
+    sf::CircleShape stones = stones22.makeStonesElement(window2.getSize().x,window2.getSize().y);
+    sf::CircleShape ground = ground22.makeGroundElement(window2.getSize().x, window2.getSize().y);
+    sf::RectangleShape grass = grass22.makeGrassElement(window2.getSize().x, window2.getSize().y);
+   
     mapMaker.playMusic();
-    if (playMusic)
-        mapMaker.music.play();
+ /*   if (playMusic)
+        mapMaker.music.play();*/
        
         sf::Font font;
         int time = 0;
@@ -83,34 +94,41 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
     window2.draw(backgroundImage);
     window2.draw(stones);
     window2.draw(ground);
-    window2.draw(grass);
+   // window2.draw(grass);
     window2.draw(water);
     window2.draw(info);
     window2.display();
-    int heightOfWater;
+    int widthOfWater;
     int scale;
     
     while (window2.isOpen())
     {
-        if ((water.getPosition().y > stones.getPosition().y) && (water.getPosition().y < (stones.getPosition().y + stones.getSize().y))) {
-            heightOfWater = water.getPosition().y - 4;
-            scale = 1;
+       sf::Vector2f waterPosF(static_cast<float>(water.getPosition().x), static_cast<float>(water.getPosition().y));
+
+       if (stones.getGlobalBounds().contains(waterPosF)){
+           widthOfWater = water.getPosition().x - 4;
+           cout << "colission stone";
+           // scale = 1;
         }
-        else if ((water.getPosition().y > ground.getPosition().y) && (water.getPosition().y < (ground.getPosition().y + ground.getSize().y))) {
-            heightOfWater = water.getPosition().y - 6;
-            scale = 2;
+       if (ground.getGlobalBounds().contains(waterPosF)) {
+           if (water.getPosition().x == ground.getPosition().x + ground.getRadius()) {
+               water.setSize(sf::Vector2f(water.getSize().x, water.getSize().y+20));
+           }
+           widthOfWater = water.getPosition().x - 4;
+           // scale = 2;
         }
-        else if ((water.getPosition().y > grass.getPosition().y) && (water.getPosition().y < (grass.getPosition().y + grass.getSize().y))) {
+       /* else if ((water.getPosition().y > grass.getPosition().y) && (water.getPosition().y < (grass.getPosition().y + grass.getSize().y))) {
             heightOfWater = water.getPosition().y - 8;
             scale = 3;
-        }
+        }*/
         else {
-            heightOfWater = water.getPosition().y - 10;
-            scale = 3;
+            widthOfWater = water.getPosition().x - 20;
+            scale = 20;
         }
-
-        water.setPosition(0, heightOfWater);
-        water.scale(1, scale);
+            float widthWat = water.getSize().x + widthOfWater;
+            float heightWat = water.getSize().y;
+        water.setPosition(widthOfWater, window2.getSize().y - 100);
+        water.setSize(sf::Vector2f(widthWat,heightWat));
         Sleep(1000);
 
             time++;
@@ -121,7 +139,7 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
         window2.draw(backgroundImage);
         window2.draw(stones);
         window2.draw(ground);
-        window2.draw(grass);
+        //window2.draw(grass);
         window2.draw(water);
         window2.draw(timerText);
         window2.draw(info);
@@ -134,7 +152,7 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
             window2.close();
             menu.createWindowMenu();
         }
-        if (heightOfWater <= 0) {
+        if (widthOfWater <= 0) {
             int msgboxID = MessageBox(
                 NULL,
                 (L"Twoja mapa zostala zalana w czasie: "s + to_wstring(time) + L" sekund"s).c_str(),

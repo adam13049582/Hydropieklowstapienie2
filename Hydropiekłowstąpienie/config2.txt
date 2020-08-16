@@ -1,6 +1,6 @@
-kamienie=100
-rosliny=100
-ziemia=200
+wysokoscKamienie=100
+wysokoscRosliny=100
+wysokoscZiemia=200
 teksturaKamienie=kamienie.jpg
 teksturaZiemia=ziemia.jpg
 teksturaRosliny=trawa.jpg
