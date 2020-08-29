@@ -1,7 +1,6 @@
 # ifndef Stonesh
 # define Stonesh
 #include "Area.h"
-#include "Area.h"
 #include <SFML\Audio\Music.hpp>
 #include <SFML/Graphics.hpp>
 #include "ConfigModel.h"

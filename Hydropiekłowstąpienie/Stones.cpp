@@ -30,14 +30,13 @@ sf::CircleShape Stones::makeStonesElement(int windowWidth, int windowHeight)
         }
         stones.setRadius(stoneHeight / 2);
         //stones.setOutlineColor(sf::Color::Red);
-        stones.setPosition(10, 20);
+        stones.setPosition(100, windowHeight - stoneHeight);
         MapElementTypes mapElementType = StonesType;
 
-        setTexture(mapElementType);
-        stones.setTexture(getTexture());
+        stones=setTexture(stones,mapElementType);
+        //stones.setTexture(getTexture());
 
         //stones.setSize(sf::Vector2f(stoneHeight, stoneHeight));
-        stones.setPosition(100, windowHeight - stoneHeight);
     }
     catch (const std::exception & e) {
         std::cout << " a standard exception was caught when make stones object, with message '"

@@ -11,7 +11,6 @@
 #include "GameController.h"
 #include "ConfigModel.h"
 #include "FileReader.h"
-#include "MapMaker.h"
 #include "MainMenu.h"
 #include "SoundsManager.h"
 #include <list>
@@ -23,6 +22,8 @@
 #include "Ground.h"
 #include "Stones.h"
 #include "Grass.h"
+#include "Music.h"
+#include "MapElementTypes.h"
 
 /// <summary>
 /// Metoda tworz¹ca okno gry
@@ -53,22 +54,35 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
     backgroundImage.setColor(sf::Color(250, 20, 20));
    
     sf::RectangleShape water(sf::Vector2f(0, 0));
+    sf::RectangleShape water2(sf::Vector2f(0, 0));
+    sf::RectangleShape water3(sf::Vector2f(0, 0));
+
     water.setSize(sf::Vector2f(100, 100));
     water.setPosition(window2.getSize().x, window2.getSize().y-100);
 
     water.setFillColor(sf::Color(0, 127, 255));
 
-    MapMaker mapMaker;
- //   mapMaker.SetConfig();
+    water2.setSize(sf::Vector2f(100, 100));
+    water2.setPosition(window2.getSize().x, window2.getSize().y - 100);
+
+    water2.setFillColor(sf::Color(0, 127, 255));
+
+    water3.setSize(sf::Vector2f(100, 100));
+    water3.setPosition(window2.getSize().x, window2.getSize().y - 100);
+
+    water3.setFillColor(sf::Color(0, 127, 255));
+    Music music;
 
 
     sf::CircleShape stones = stones22.makeStonesElement(window2.getSize().x,window2.getSize().y);
     sf::CircleShape ground = ground22.makeGroundElement(window2.getSize().x, window2.getSize().y);
     sf::RectangleShape grass = grass22.makeGrassElement(window2.getSize().x, window2.getSize().y);
    
-    mapMaker.playMusic();
- /*   if (playMusic)
-        mapMaker.music.play();*/
+    Area area;
+
+    music.playMusic();
+    if (playMusic)
+        music.music.play();
        
         sf::Font font;
         int time = 0;
@@ -94,41 +108,55 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
     window2.draw(backgroundImage);
     window2.draw(stones);
     window2.draw(ground);
-   // window2.draw(grass);
+    window2.draw(grass);
     window2.draw(water);
     window2.draw(info);
     window2.display();
     int widthOfWater;
+    int heightOfWater = 100;
     int scale;
     
     while (window2.isOpen())
     {
        sf::Vector2f waterPosF(static_cast<float>(water.getPosition().x), static_cast<float>(water.getPosition().y));
 
-       if (stones.getGlobalBounds().contains(waterPosF)){
+       if ((water.getPosition().x <= stones.getPosition().x + 2 * stones.getRadius()) && (water.getPosition().x >= stones.getPosition().x + stones.getRadius())) {//(stones.getGlobalBounds().contains(waterPosF)){
            widthOfWater = water.getPosition().x - 4;
            cout << "colission stone";
            // scale = 1;
         }
-       if (ground.getGlobalBounds().contains(waterPosF)) {
-           if (water.getPosition().x == ground.getPosition().x + ground.getRadius()) {
-               water.setSize(sf::Vector2f(water.getSize().x, water.getSize().y+20));
+     //  if (ground.getGlobalBounds().contains(waterPosF)) {
+           if ((water.getPosition().x <= ground.getPosition().x + 1.6 * ground.getRadius()) && (water.getPosition().x >= ground.getPosition().x + ground.getRadius())) {// && (water.getPosition().x <= ground.getPosition().x + ground.getRadius())
+               //water.setSize(sf::Vector2f(water.getSize().x, water.getSize().y+20));
+               cout << "colission ground";
+               if (water.getPosition().y >= ground.getPosition().y) 
+               {
+                   //water.setPosition(ground.getPosition().x + ground.getRadius(), water.getPosition().y);
+                   widthOfWater = ground.getPosition().x + ground.getRadius();
+                  // water.setSize(sf::Vector2f(window2.getSize().x-(ground.getPosition().x + ground.getRadius()),heightOfWater));
+                   heightOfWater += 4;
+               }
+               else {
+                   widthOfWater = water.getPosition().x - 4;
+               }
            }
-           widthOfWater = water.getPosition().x - 4;
+          /* cout << "colission ground";
+           widthOfWater = water.getPosition().x - 2;
+           heightOfWater += 4;*/
            // scale = 2;
-        }
-       /* else if ((water.getPosition().y > grass.getPosition().y) && (water.getPosition().y < (grass.getPosition().y + grass.getSize().y))) {
-            heightOfWater = water.getPosition().y - 8;
+       // }
+        else if (grass.getGlobalBounds().contains(waterPosF)) {
+           widthOfWater = water.getPosition().x - 8;
             scale = 3;
-        }*/
+        }
         else {
             widthOfWater = water.getPosition().x - 20;
             scale = 20;
         }
             float widthWat = water.getSize().x + widthOfWater;
-            float heightWat = water.getSize().y;
-        water.setPosition(widthOfWater, window2.getSize().y - 100);
-        water.setSize(sf::Vector2f(widthWat,heightWat));
+          //  float heightWat = water.getSize().y +;
+        water.setPosition(widthOfWater, window2.getSize().y - heightOfWater);
+        water.setSize(sf::Vector2f(widthWat, heightOfWater));
         Sleep(1000);
 
             time++;
@@ -137,18 +165,19 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
 
         window2.clear();
         window2.draw(backgroundImage);
+        window2.draw(water);
+
         window2.draw(stones);
         window2.draw(ground);
-        //window2.draw(grass);
-        window2.draw(water);
+        window2.draw(grass);
         window2.draw(timerText);
         window2.draw(info);
 
         window2.display();
         if (GetAsyncKeyState(VK_ESCAPE))
         {
-            mapMaker.music.stop();
-            mapMaker.music.pause();
+            music.music.stop();
+            music.music.pause();
             window2.close();
             menu.createWindowMenu();
         }
@@ -164,8 +193,8 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
             switch (msgboxID)
             {
             case IDOK:
-                mapMaker.music.stop();
-                mapMaker.music.pause();
+                music.music.stop();
+                music.music.pause();
                 window2.close();
                 menu.createWindowMenu();
                break;         

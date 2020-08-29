@@ -1,6 +1,7 @@
 #include "Ground.h"
 #include <iostream>
 #include "MapElementTypes.h"
+#include "Music.h"
 
 /// <summary>
 /// Kontruktor
@@ -29,12 +30,13 @@ sf::CircleShape Ground::makeGroundElement(int windowWidth, int positionofStones)
         // ground.setSize(sf::Vector2f(windowWidth, groundHeight));
         ground.setPosition(400, positionofStones - groundHeight);
 
+        sf::CircleShape ground1(groundHeight, 3);
         MapElementTypes mapElementType = GroundType;
-        setTexture(mapElementType);
+        ground1 =setTexture(ground,mapElementType);
 
         //sf::Texture testtex = getTexture();
-        ground.setTexture(getTexture());
-        return ground;
+        //ground.setTexture(getTexture());
+        return ground1;
 
     }
     catch (const std::exception & e) {

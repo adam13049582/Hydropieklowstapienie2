@@ -2,6 +2,7 @@
 #include <iostream>
 #include "string"
 #include "ConfigModel.h"
+#include <SFML/Graphics.hpp>
 #include <vector>
 #include "FileReader.h"
 
@@ -69,32 +70,40 @@ void Area::SetConfig()
   /// Metoda wczytuj¹ca teksturê z pliku
   /// <param name="mapElementType"> typ obiektu na który bêdzie naniesiona tekstura(Enum castowany na int)</param>
   /// </summary>
-void Area::setTexture(int mapElementType) {
-    string fileName = "";
-     std::vector < ConfigModel > vecOfStr(Config.begin(), Config.end());
-    if (mapElementType == 0) {
-        for (ConfigModel str : vecOfStr) {
-            if (str.key == "teksturaKamienie")
-                fileName = "images/" + str.value;
-        }
-    }
-    else if (mapElementType == 1) {
-        for (ConfigModel str : vecOfStr) {
-            if (str.key == "teksturaZiemia")
-                fileName = "images/" + str.value;
-        }
-    }
-    else if (mapElementType == 2) {
-        for (ConfigModel str : vecOfStr) {
-            if (str.key == "teksturaRosliny")
-                fileName = "images/" + str.value;
-        }
-    }
-    if (!texture.loadFromFile(fileName))
-        std::cout << "Error: Could not display image from " << fileName << std::endl;
-}
+//template <typename T>
+//T Area::setTexture(T area,int mapElementType) {
+//
+//    //https://translate.google.pl/translate?hl=pl&sl=en&u=http://www.cs.technion.ac.il/users/yechiel/c%2B%2B-faq/separate-template-class-defn-from-decl.html&prev=search&pto=aue
+//    // https://stackoverflow.com/questions/25493884/calling-a-template-method-from-another-template-method-in-c
+//    sf::Texture texture;
+//    string fileName = "";
+//     std::vector < ConfigModel > vecOfStr(Config.begin(), Config.end());
+//    if (mapElementType == 0) {
+//        for (ConfigModel str : vecOfStr) {
+//            if (str.key == "teksturaKamienie")
+//                fileName = "images/" + str.value;
+//        }
+//    }
+//    else if (mapElementType == 1) {
+//        for (ConfigModel str : vecOfStr) {
+//            if (str.key == "teksturaZiemia")
+//                fileName = "images/" + str.value;
+//        }
+//    }
+//    else if (mapElementType == 2) {
+//        for (ConfigModel str : vecOfStr) {
+//            if (str.key == "teksturaRosliny")
+//                fileName = "images/" + str.value;
+//        }
+//    }
+//    if (!texture.loadFromFile(fileName))
+//        std::cout << "Error: Could not display image from " << fileName << std::endl;
+//
+//    area.setTexture(&texture);
+//    return area;
+//}
 
-sf::Texture* Area::getTexture()
-{
-    return &texture;
-}
+//sf::Texture* Area::getTexture()
+//{
+//    return &texture;
+//}

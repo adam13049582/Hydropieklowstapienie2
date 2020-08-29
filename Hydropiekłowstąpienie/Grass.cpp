@@ -28,13 +28,13 @@ sf::RectangleShape Grass::makeGrassElement(int windowWidth, int positionofGround
                 grassHeight = stoi(str.value);
         }
 
-        grass.setSize(sf::Vector2f(windowWidth, grassHeight));
+        grass.setSize(sf::Vector2f(100, grassHeight));
         grass.setPosition(0, positionofGround - grassHeight);
         MapElementTypes mapElementType = GrassType;
-        setTexture(mapElementType);
+        grass=setTexture(grass,mapElementType);
 
         //sf::Texture testtex = getTexture();
-        grass.setTexture(getTexture());
+        //grass.setTexture(getTexture());
     }
     catch (const std::exception & e) {
         std::cout << " a standard exception was caught when make stones object, with message '"

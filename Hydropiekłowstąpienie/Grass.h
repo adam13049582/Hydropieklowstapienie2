@@ -1,7 +1,8 @@
 # ifndef Grassh
 # define Grassh
-#include "Ground.h"
-class Grass : public Ground {
+#include "Area.h"
+#include <SFML/Graphics.hpp>
+class Grass : public Area {
 private:
 	int absorpPosibility = 5;
 public:
