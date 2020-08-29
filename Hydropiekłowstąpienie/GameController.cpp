@@ -31,13 +31,13 @@
 /// <param name="playMusic"> parametr, czy w³¹czyæ muzykê</param>
 /// <param name="width"> szerokoœæ okna</param>
 /// <param name="height">wysokoœæ okna</param>
-void GameController::createWindowGame(bool playMusic, int width,int height) {
+void GameController::createWindow(bool playMusic, int width,int height) {
 
     sf::RenderWindow window2(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
     sf::Texture background;
     sf::Sprite backgroundImage;
     FileReader fileReader;
-    MainMenu menu;
+    WindowCreator* menu= new MainMenu();
     Ground ground22;
     Stones stones22;
     Grass grass22;
@@ -179,7 +179,7 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
             music.music.stop();
             music.music.pause();
             window2.close();
-            menu.createWindowMenu();
+            menu->createWindow(false,  width,  height);
         }
         if (widthOfWater <= 0) {
             int msgboxID = MessageBox(
@@ -196,7 +196,7 @@ void GameController::createWindowGame(bool playMusic, int width,int height) {
                 music.music.stop();
                 music.music.pause();
                 window2.close();
-                menu.createWindowMenu();
+                menu->createWindow(false, width, height);
                break;         
             }
             

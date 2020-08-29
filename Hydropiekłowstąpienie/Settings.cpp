@@ -8,7 +8,7 @@
 /// <summary>
 /// Metoda tworz¹ca okno ustawieñ
 /// </summary>
-void Settings::createSettingWindow()
+void Settings::createWindow(bool playMusic, int width, int height)
 {
     sf::RenderWindow settingsWindow(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
 
@@ -128,7 +128,7 @@ void Settings::createSettingWindow()
     settingsWindow.draw(textBack);
 
     settingsWindow.display();
-    MainMenu menu;
+    MainMenu* menu=new MainMenu();
     GameController game;
 
     while (settingsWindow.isOpen())
@@ -161,8 +161,8 @@ void Settings::createSettingWindow()
                 sf::Vector2f mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
                 if (smallResolutionButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    menu.setWidth(1024);
-                    menu.setHeight(622);
+                    menu->setWidth(1024);
+                    menu->setHeight(622);
                     setWidth(1024);
                     setHeight(622);
 
@@ -178,8 +178,8 @@ void Settings::createSettingWindow()
                 }
                 else if (bigResolutionButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    menu.setWidth(1366);
-                    menu.setHeight(768);
+                    menu->setWidth(1366);
+                    menu->setHeight(768);
                     setWidth(1366);
                     setHeight(768);
                     settingsWindow.create(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
@@ -193,7 +193,7 @@ void Settings::createSettingWindow()
                 }
                 else if (textMusicYESButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    menu.setPlayMusic(true);
+                    menu->setPlayMusic(true);
                     textMusicYES.setFillColor(sf::Color::Yellow);
                     textMusicNO.setFillColor(sf::Color(97, 83, 14));
                     settingsWindow.draw(textMusicYES);
@@ -201,7 +201,7 @@ void Settings::createSettingWindow()
                 }
                 else if (textMusicNOButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    menu.setPlayMusic(false);
+                    menu->setPlayMusic(false);
                     textMusicNO.setFillColor(sf::Color::Yellow);
                     textMusicYES.setFillColor(sf::Color(97, 83, 14));
 
@@ -209,7 +209,7 @@ void Settings::createSettingWindow()
                 else if (exitButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     settingsWindow.close();
-                    menu.createWindowMenu();
+                    menu->createWindow(false,menu->getWidth(),menu->getHeight());
                 }
             }
             break;

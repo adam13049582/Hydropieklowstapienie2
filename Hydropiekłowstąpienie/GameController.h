@@ -4,6 +4,7 @@
 #include <SFML\Graphics\Color.hpp>
 #include <list>
 #include "ConfigModel.h"
+#include "WindowCreator.h"
 #include <SFML/Graphics.hpp>
 
 
@@ -12,7 +13,7 @@ using namespace std;
 /// <summary>
 /// G³ówna klasa obs³uguj¹ca zdarzenie i zarz¹dzaj¹ca przebiegiem gry
 /// <summary>
-class GameController {
+class GameController : public WindowCreator {
 private:
 public:
     /// <summary>
@@ -21,6 +22,6 @@ public:
     /// <param name="playMusic"> parametr, czy w³¹czyæ muzykê</param>
     /// <param name="width"> szerokoœæ okna</param>
     /// <param name="height">wysokoœæ okna</param>
-    void createWindowGame(bool playMusic, int width, int height);
+    void createWindow(bool playMusic, int width, int height);
 };
 #endif

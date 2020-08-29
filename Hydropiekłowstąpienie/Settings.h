@@ -1,13 +1,14 @@
 # ifndef SettingsH
 # define SettingsH
 #include <iostream>
+#include "WindowCreator.h"
 
 using namespace std;
 
 /// <summary>
 /// Klasa tworz¹ca obs³uguj¹ca zdarzenia w panelu Ustawienia
 /// <summary>
-class Settings {
+class Settings : public WindowCreator {
 	//szerokoœæ okna
 	int width = 1024;
 
@@ -29,7 +30,7 @@ public:
 	/// <summary>
 	/// Metoda tworz¹ca okno ustawieñ
 	/// </summary>
-	void  createSettingWindow();
+	void  createWindow(bool playMusic, int width, int height);
 
 	
 };

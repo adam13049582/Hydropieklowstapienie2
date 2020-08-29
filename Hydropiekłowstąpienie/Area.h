@@ -8,7 +8,8 @@
 
 
 using namespace std;
-
+//https://www.p-programowanie.pl/cpp/polimorfizm-metody-wirtualne/
+//http://cpp0x.pl/kursy/Programowanie-obiektowe-C++/Polimorfizm/Metody-wirtualne/495
 class Area {
 private:
 	int width;

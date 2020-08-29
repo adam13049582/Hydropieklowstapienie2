@@ -9,7 +9,7 @@ using namespace std;
 
         int main()
         {           
-            MainMenu mainMenu;
-            mainMenu.createWindowMenu();
+            MainMenu* mainMenu = new MainMenu();
+            mainMenu->createWindow( false, 1024, 622);
             return 0;	
 	    }

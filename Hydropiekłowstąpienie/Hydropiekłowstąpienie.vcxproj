@@ -148,6 +148,7 @@
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="Stones.cpp" />
+    <ClCompile Include="WindowCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Area.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="Music.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Stones.h" />
+    <ClInclude Include="WindowCreator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

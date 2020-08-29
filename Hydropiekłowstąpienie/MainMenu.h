@@ -1,11 +1,14 @@
  # ifndef MainMenuh
  # define MainMenuh
+
+#include "WindowCreator.h"
+
 using namespace std;
 
 /// <summary>
 /// Klasa tworz¹ca i obs³uguj¹ca dzia³anie menu
 /// <summary>
-class MainMenu {
+class MainMenu : public WindowCreator {
 private:
     //szerokoœæ okna
     int width=1024;
@@ -20,7 +23,7 @@ public:
     /// <summary>
     /// Metoda tworz¹ca okno menu
     /// </summary>
-    void createWindowMenu();
+    void createWindow(bool playMusic, int width, int height);
 
     /// <summary>
     /// Metoda ustawiaj¹ca szerokoœæ okna
@@ -29,10 +32,22 @@ public:
     void setWidth(int _i);
 
     /// <summary>
-    /// Metoda ustawiaj¹ca szerokoœæ okna
+    /// Metoda ustawiaj¹ca wysokoœæ okna
     /// </summary>
     /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru height</param>
     void setHeight(int _i);
+
+    /// <summary>
+   /// Metoda pobieraj¹ca szerokoœæ okna
+   /// </summary>
+   /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru width</param>
+    int getWidth();
+
+    /// <summary>
+    /// Metoda pobieraj¹ca wysokoœæ okna
+    /// </summary>
+    /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru height</param>
+    int getHeight();
 
     /// <summary>
     /// Metoda ustawiaj¹ca parametr, czy odtwarzaæ muzykê

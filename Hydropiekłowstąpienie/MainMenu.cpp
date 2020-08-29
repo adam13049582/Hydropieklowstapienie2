@@ -17,7 +17,7 @@ using namespace std;
 /// <summary>
 /// Metoda tworz¹ca okno menu
 /// </summary>
-void MainMenu::createWindowMenu() {
+void MainMenu::createWindow(bool playMusic, int width, int height) {
     sf::RenderWindow window(sf::VideoMode(width, height), "Hydropieklowstapienie", sf::Style::Default);
 
     sf::Texture background;
@@ -123,15 +123,15 @@ void MainMenu::createWindowMenu() {
                 sf::Vector2f mousePosF(static_cast<float>(mousePos.x), static_cast<float>(mousePos.y));
                 if (newGameButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    GameController game;
+                    GameController* game=new GameController();
                     window.close();
-                    game.createWindowGame(playMusic,width,height);               
+                    game->createWindow(playMusic,width,height);               
                }
                 else if (settingsButtonImage.getGlobalBounds().contains(mousePosF))
                 {
-                    Settings settings;
+                    WindowCreator* settings=new Settings();
                     window.close();
-                    settings.createSettingWindow();
+                    settings->createWindow(false, width, height);
                 }
                 else if (exitButtonImage.getGlobalBounds().contains(mousePosF))
                 {
@@ -162,6 +162,23 @@ void MainMenu::setWidth(int _i)
 void MainMenu::setHeight(int _i)
 {
     height = _i;
+}
+/// <summary>
+/// Metoda pobieraj¹ca szerokoœæ okna
+/// </summary>
+/// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru width</param>
+int MainMenu::getWidth()
+{
+    return width;
+}
+
+/// <summary>
+/// Metoda pobieraj¹ca wysokoœæ okna
+/// </summary>
+/// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru width</param>
+int MainMenu::getHeight()
+{
+    return height;
 }
 /// <summary>
 /// Metoda ustawiaj¹ca parametr, czy odtwarzaæ muzykê
