@@ -209,7 +209,7 @@ void Settings::createWindow(bool playMusic, int width, int height)
                 else if (exitButtonImage.getGlobalBounds().contains(mousePosF))
                 {
                     settingsWindow.close();
-                    menu->createWindow(false,menu->getWidth(),menu->getHeight());
+                    menu->createWindow(menu->getPlayMusic(),menu->getWidth(),menu->getHeight());
                 }
             }
             break;
@@ -238,8 +238,9 @@ void Settings::createWindow(bool playMusic, int width, int height)
 
 /// <summary>
 /// Metoda ustawiaj¹ca szerokoœæ okna
-/// </summary>
 /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do pola width</param>
+/// </summary>
+
 void Settings::setWidth(int _i)
 {
     width = _i;
@@ -247,8 +248,8 @@ void Settings::setWidth(int _i)
 
 /// <summary>
 /// Metoda ustawiaj¹ca wysokoœæ okna
-/// </summary>
 /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ pola height</param>
+/// </summary>
 void Settings::setHeight(int _i)
 {
     height = _i;

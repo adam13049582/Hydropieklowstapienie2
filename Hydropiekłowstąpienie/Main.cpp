@@ -10,6 +10,6 @@ using namespace std;
         int main()
         {           
             MainMenu* mainMenu = new MainMenu();
-            mainMenu->createWindow( false, 1024, 622);
+            mainMenu->createWindow( true, 1024, 622);
             return 0;	
 	    }

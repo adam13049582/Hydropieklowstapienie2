@@ -8,8 +8,10 @@
 
 
 using namespace std;
-//https://www.p-programowanie.pl/cpp/polimorfizm-metody-wirtualne/
-//http://cpp0x.pl/kursy/Programowanie-obiektowe-C++/Polimorfizm/Metody-wirtualne/495
+
+/// <summary>
+/// podstawowa klasa do tworzenia obiektów gry(przeszkód) implementuje podstawowe i uniwersalne pola oraz metody
+/// </summary>
 class Area {
 private:
 	int width;
@@ -18,16 +20,12 @@ private:
 	int positionY;
 	sf::Texture texture;
 
-	//tablica z teksturami, które bêd¹ nanoszone na poszczególne elementy mapy
-	//sf::Texture texture;
-
 public:
 
 	//lista przechowywuj¹ca elementy konfiguracjê
 	std::list<ConfigModel> Config;
 
 	//zalewanie
-	void flooding(int floodingLevel); 
 	//pobieranie wysokoœci
 	int getHeight();
 	//ustawianie wysokoœci
@@ -36,11 +34,13 @@ public:
 	int getWidth();
 	//ustawianie szerokoœci
 	void setWidth(int _width);
-	int getPositionX();
-	void setPositionX(int _positionX);
-	int getPositionY();
-	void setPositionY(int _positionY);
+
+	//ustawianie wartoœci w liœcie Config
 	void SetConfig();
+
+	/// <summary>
+	/// Szablon metody nak³adaj¹cej tekstury na obiekty w zale¿noœci od jego typu 
+	/// </summary>
 	template <typename T>
 	T setTexture(T area, int mapElementType) {
 		string fileName = "";
@@ -69,7 +69,6 @@ public:
 		area.setTexture(&texture);
 		return area;
 	}
-	//sf::Texture* getTexture();
 
 };
 

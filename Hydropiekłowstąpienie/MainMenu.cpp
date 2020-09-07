@@ -149,24 +149,24 @@ void MainMenu::createWindow(bool playMusic, int width, int height) {
 
 /// <summary>
 /// Metoda ustawiaj¹ca szerokoœæ okna
-/// </summary>
 /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru width</param>
+/// </summary>
 void MainMenu::setWidth(int _i)
 {
     width = _i;
 }
 /// <summary>
 /// Metoda ustawiaj¹ca szerokoœæ okna
-/// </summary>
 /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru height</param>
+/// </summary>
 void MainMenu::setHeight(int _i)
 {
     height = _i;
 }
 /// <summary>
 /// Metoda pobieraj¹ca szerokoœæ okna
-/// </summary>
 /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru width</param>
+/// </summary>
 int MainMenu::getWidth()
 {
     return width;
@@ -182,8 +182,8 @@ int MainMenu::getHeight()
 }
 /// <summary>
 /// Metoda ustawiaj¹ca parametr, czy odtwarzaæ muzykê
-/// </summary>
 /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru playMusic</param>
+/// </summary>
 void MainMenu::setPlayMusic(bool _i)
 {
     playMusic = _i;

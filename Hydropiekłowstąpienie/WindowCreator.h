@@ -1,6 +1,9 @@
 # ifndef WindowCreatorh
 # define WindowCreatorh
 
+/// <summary>
+/// podstawowa klasa do tworzenia okien gry
+/// </summary>
 class WindowCreator {
 
 public:

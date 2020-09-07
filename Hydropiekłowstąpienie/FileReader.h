@@ -9,15 +9,15 @@
 
 using namespace std;
 
-///summary
+/// <summary>
 ///Klasa do odczytu danych z pliku konfiguracyjnego
-///summary
+/// </summary>
 class FileReader {
 public:
 	/// <summary>
 	/// Metoda pobieraj¹ca dane z konfiguracji
-	/// </summary>
 	///<returns> lista obiektów wczytanych z konfiguracji</returns>
+	/// </summary>
 	list<ConfigModel> configRead();
 };
 #endif

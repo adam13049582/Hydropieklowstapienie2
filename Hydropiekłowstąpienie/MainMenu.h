@@ -23,12 +23,13 @@ public:
     /// <summary>
     /// Metoda tworz¹ca okno menu
     /// </summary>
+    //POLIMORFIZM
     void createWindow(bool playMusic, int width, int height);
 
     /// <summary>
     /// Metoda ustawiaj¹ca szerokoœæ okna
-    /// </summary>
     /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru width</param>
+    /// </summary>
     void setWidth(int _i);
 
     /// <summary>
@@ -39,20 +40,20 @@ public:
 
     /// <summary>
    /// Metoda pobieraj¹ca szerokoœæ okna
-   /// </summary>
    /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru width</param>
+   /// </summary>
     int getWidth();
 
     /// <summary>
     /// Metoda pobieraj¹ca wysokoœæ okna
-    /// </summary>
     /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru height</param>
+    /// </summary>
     int getHeight();
 
     /// <summary>
     /// Metoda ustawiaj¹ca parametr, czy odtwarzaæ muzykê
-    /// </summary>
     /// <param name="_i"> wartoœæ jak¹ trzeba przypisaæ do parametru playMusic</param>
+    /// </summary>
     void setPlayMusic(bool _i);
 
     /// <summary>

@@ -1,5 +1,5 @@
 wysokoscKamienie=100
-wysokoscRosliny=100
+wysokoscRosliny=50
 wysokoscZiemia=200
 teksturaKamienie=kamienie.jpg
 teksturaZiemia=ziemia.jpg

@@ -4,13 +4,20 @@
 #include <string>
 
 using namespace std;
-/// summary
+
+///<summary>
 /// Model wartoœci zawartych w konfiguracji konfiguracji
-/// summary
+/// </summary>
 struct ConfigModel {
-	//nazwa
+
+	/// <summary>
+	/// Nazwa
+	/// </summary>
 	string key;
-	//wartoœæ
+
+	/// <summary>
+	/// Wartoœæ
+	/// </summary>
 	string value;
 };
 

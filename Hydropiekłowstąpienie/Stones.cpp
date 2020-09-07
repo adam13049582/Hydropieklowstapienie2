@@ -10,10 +10,10 @@ Stones::Stones() {
 }
 
 /// <summary>
-   /// Metoda nak³adaj¹ca teksturê na prostok¹t imitujacy roœliny
+   /// Metoda tworz¹ca ko³o imituj¹ce kamienie
    /// <param name="windowWidth"> szerokoœæ okna</param>
    /// <param name="windowHeight">wysokoœæ okna</param>
-   /// <returns> obiekt typu RectangleShape bêd¹cy elementem mapy, w tym przypadku Kamienie<returns>
+   /// <returns> obiekt typu CircleShape bêd¹cy elementem mapy, w tym przypadku Kamienie</returns>
    /// </summary>
 sf::CircleShape Stones::makeStonesElement(int windowWidth, int windowHeight)
 {
@@ -29,14 +29,10 @@ sf::CircleShape Stones::makeStonesElement(int windowWidth, int windowHeight)
                 stoneHeight = stoi(str.value);
         }
         stones.setRadius(stoneHeight / 2);
-        //stones.setOutlineColor(sf::Color::Red);
-        stones.setPosition(100, windowHeight - stoneHeight);
+        stones.setPosition(300, windowHeight - stoneHeight);
         MapElementTypes mapElementType = StonesType;
 
         stones=setTexture(stones,mapElementType);
-        //stones.setTexture(getTexture());
-
-        //stones.setSize(sf::Vector2f(stoneHeight, stoneHeight));
     }
     catch (const std::exception & e) {
         std::cout << " a standard exception was caught when make stones object, with message '"

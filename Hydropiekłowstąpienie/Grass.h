@@ -2,12 +2,15 @@
 # define Grassh
 #include "Area.h"
 #include <SFML/Graphics.hpp>
+
+/// <summary>
+/// Klasa do zarz¹dzania przeszkod¹ typu rosliny
+/// </summary>
 class Grass : public Area {
-private:
-	int absorpPosibility = 5;
+
 public:
 	/// <summary>
-	/// Metoda nak³adaj¹ca teksturê na prostok¹t imitujacy roœliny
+	/// Metoda tworz¹ca prostok¹t imitujacy roœliny
 	/// <param name="windowWidth"> szerokoœæ okna</param>
 	/// <param name="positionofStones">wspó³rzêdna y prostok¹tu imituj¹cego kamienie</param>
 	/// <returns> obiekt typu RectangleShape bêd¹cy elementem mapy, w tym przypadku Ziemia</returns>

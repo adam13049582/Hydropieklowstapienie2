@@ -9,8 +9,8 @@
 
 /// <summary>
 /// Metoda pobieraj¹ca dane z konfiguracji
-/// </summary>
 ///<returns> lista obiektów wczytanych z konfiguracji</returns>
+/// </summary>
 list<ConfigModel> FileReader::configRead() {
     std::ifstream cFile("config2.txt");
     list<ConfigModel> config;
